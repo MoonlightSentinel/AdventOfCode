@@ -48,9 +48,7 @@ public class Day7 {
 		}
 	}
 	
-	static class Program {
-		static int bad = -1;
-		
+	static class Program {		
 		String name;
 		int weight, combinedWeight = -1;
 		ArrayList<String> pendingPrograms = new ArrayList<>();
