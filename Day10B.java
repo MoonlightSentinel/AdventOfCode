@@ -13,7 +13,7 @@ public class Day10B {
 
 	private static char[] toAppend = {17, 31, 73, 47, 23};
 	
-	private static String solve(String input) {
+	public static String solve(String input) {
 		int[] list = new int[256];
 		Arrays.setAll(list, i -> i);
 		
@@ -49,7 +49,9 @@ public class Day10B {
 				i++;
 			}
 			
-			sb.append(Integer.toHexString(res));
+			String hex = Integer.toHexString(res);
+			if(hex.length() == 1) sb.append('0'); 
+			sb.append(hex);
 		}
 		
 		return sb.toString();
