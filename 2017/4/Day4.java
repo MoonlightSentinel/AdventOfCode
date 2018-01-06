@@ -8,7 +8,7 @@ public class Day4 {
 	public static void main(String[] args) throws Exception {
 		long counter =
 		
-		Files.lines(Paths.get("Day4_Input"))
+		Files.lines(Paths.get("Day4_Input.txt"))
 				
 		.map(line -> line.split(" "))
 		.map(Arrays::stream)
