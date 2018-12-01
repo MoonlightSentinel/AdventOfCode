@@ -1,3 +1,3 @@
-Advent of Code 2017
+Advent of Code
 
-My solutions for the Advent of Code 2017
+My solutions for the Advent of Code [2016,2017,2018]
