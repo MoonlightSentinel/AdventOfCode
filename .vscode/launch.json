@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+
+    "configurations": [
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "Debug current file's unittests",
+            "cwd": "${fileDirname}",
+            "target": "${workspaceFolder}/generated/${relativeFileDirname}/unittests",
+            "preLaunchTask": "Build current file's unittests",
+            "autorun": [
+                "source /home/florian/data/repos/Dlang/forks/dlang-debug/gdb_dlang.py"
+            ],
+            "valuesFormatting": "prettyPrinters"
+        }
+    ]
+}

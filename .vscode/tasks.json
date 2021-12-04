@@ -1,0 +1,81 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "problemMatcher": [
+        "$dmd"
+    ],
+    "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+    },
+
+    "group": "build",
+
+    "tasks": [
+        {
+            "label": "Build current file's unittests",
+            "type": "process",
+            "command": "dmd",
+            "args": [
+                "-g",
+                "-m64",
+                "-J${fileDirname}",
+                "-checkaction=context",
+                "-unittest",
+                "-od=${workspaceFolder}/generated/${relativeFileDirname}/",
+                "-of=${workspaceFolder}/generated/${relativeFileDirname}/unittests",
+                "${relativeFile}"
+            ],
+        },
+        {
+            "label": "Test current file",
+            "type": "process",
+            "command": "${workspaceFolder}/generated/${relativeFileDirname}/unittests",
+            "dependsOn": [
+                "Build current file's unittests"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+        },
+        {
+            "label": "Build current file",
+            "type": "process",
+            "command": "dmd",
+            "args": [
+                "-g",
+                "-m64",
+                "-J${fileDirname}",
+                "-od=${workspaceFolder}/generated/${relativeFileDirname}/",
+                "-of=${workspaceFolder}/generated/${relativeFileDirname}/solution",
+                "${relativeFile}"
+            ],
+            "dependsOn": [
+                "Test current file"
+            ],
+        },
+        {
+            "label": "Solve current file",
+            "type": "process",
+            "command": "${workspaceFolder}/generated/${relativeFileDirname}/solution",
+            "dependsOn": [
+                "Build current file"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+            },
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+        }
+    ]
+}
